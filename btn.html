@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input[type="checkbox"] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+        color: aliceblue;
+      }
+
+      label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 400px;
+        height: 100px;
+        background: linear-gradient(
+          117deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(0, 0, 0, 1) 100%
+        );
+        display: block;
+        border-radius: 100px;
+        position: relative;
+      }
+
+      label:after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 90px;
+        height: 90px;
+        background: white;
+        border-radius: 90px;
+        transition: 0.3s;
+      }
+
+      input:checked + label {
+        background: -webkit-gradient(
+          117deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(0, 0, 0, 1) 100%
+        );
+      }
+
+      input:checked + label:after {
+        left: calc(100% - 5px);
+        transform: translateX(-100%);
+      }
+
+      label:active:after {
+        width: 130px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="sm" />
+
+    <label for="sm" class="btn-slide">Toggle</label>
+    <img id="image" src="pp.png" width="200" height="200" />
+  </body>
+  <script>
+    var imgs = ["pp.png", "pointtwo.png"];
+    var i = 0;
+
+    var sm = document.querySelector("#sm");
+    var btnSlide = document.querySelector(".btn-slide");
+
+    btnSlide.addEventListener("click", function () {
+      i++;
+      if (i >= imgs.length) {
+        i = 0;
+      }
+      image.src = imgs[i];
+    });
+  </script>
+</html>
